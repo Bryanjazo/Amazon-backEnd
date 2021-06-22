@@ -19,7 +19,7 @@ gem 'faker'
 gem 'webpacker'
 gem 'devise'
 gem 'devise-jwt'
-
+gem 'stripe'
 gem 'pry'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

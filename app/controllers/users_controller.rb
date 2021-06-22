@@ -36,12 +36,23 @@ class UsersController < ApplicationController
     end
   end
 
+def update
+
+  user = User.find_by(id: params[:id].to_i)
+  user.update(email: params[:email], adress: params[:adress], name: params[:name])
+  if user.save
+    render json: user
+
+  else
+    render json:{message: "Can not update"}
+  end
+end
 
 
     private
 
     def user_params
-        params.require(:user).permit(:user_id, :username, :email, :password)
+        params.require(:user).permit(:user_id, :username,:name, :email, :password)
     end
 
 end
