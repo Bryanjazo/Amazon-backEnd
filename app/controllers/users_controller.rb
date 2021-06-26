@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+# skip_before_action :authorized, only: [:create]
 
     def index
 
@@ -19,20 +19,18 @@ class UsersController < ApplicationController
     def create
     @user = User.new(email: params[:email], password: params[:password])
     if @user.save
-    session[:user_id] = @user.id
+      @token = encode_token({ user_id: @user.id })
+     render json: { user: @user, jwt: @token }, status: :created
+      # render json: {
+      #   valid: "true",
+      #   user: {
+      #   id: @user.id,
+      #   email: @user.email,
+      #   password: @user.password},
+      #   token: token}
 
-      render json: {
-        status: 200,
-        id: @user.id,
-        email: @user.email,
-        password: @user.password
-
-      }
     else
-      render json: {
-        status: 500,
-        errors: @user.errors.full_messages
-      }
+      render json: { error: 'failed to create user' }, status: :not_acceptable
     end
   end
 
