@@ -21,6 +21,8 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'stripe'
 gem 'pry'
+gem 'knock'
+gem 'jwt'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

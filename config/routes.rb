@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :baskets
   resources :orders
-  devise_for :users
+
   resources :carts
   resources :reviews
   resources :products
   resources :sessions
+
+  
   resources :users do
     resources :orders
   end

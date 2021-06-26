@@ -1,7 +1,6 @@
 class BasketsController < ApplicationController
   def create
     basket = Basket.new(basket_params)
-    
     if basket.save
       binding.pry
       render json: basket
